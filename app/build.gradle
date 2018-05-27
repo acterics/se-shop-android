@@ -74,6 +74,8 @@ dependencies {
     implementation dependencies.bottomNavigation
 
     implementation dependencies.supportRecyclerView
+    implementation dependencies.supportCardView
+    implementation dependencies.supportCustomTabs
     implementation dependencies.supportV4
     implementation dependencies.supportDesign
     implementation dependencies.supportAppCompatV7
@@ -82,7 +84,9 @@ dependencies {
 
     implementation dependencies.room
     implementation dependencies.roomRx
-    kapt dependencies.roomCompiler
+    kapt(dependencies.roomCompiler) {
+        exclude group: 'com.android.support'
+    }
 
     implementation dependencies.moxy
     implementation dependencies.moxyAppCompat

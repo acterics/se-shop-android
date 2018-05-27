@@ -1,6 +1,10 @@
 package com.rtfmarket.ui.bottomnavigation
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.rtfmarket.R
 import com.rtfmarket.common.BaseFragment
 import com.rtfmarket.common.extension.dsl.lazySubcomponent
 import com.rtfmarket.di.bottomnavigation.BottomNavigationComponent
@@ -47,6 +51,18 @@ class BottomNavigationTabFragment: BaseFragment() {
 
     override fun setupNavigator() { cicerone.navigatorHolder.setNavigator(navigator) }
     override fun removeNavigator() { cicerone.navigatorHolder.removeNavigator() }
-
     override fun injectComponent() { component?.inject(this) }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_bottom_navigation_tab, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (childFragmentManager.findFragmentById(R.id.holderBottomNavigationTab) == null) {
+            tabRouter.replaceScreen(tabName)
+        }
+    }
+
+
 }

@@ -40,7 +40,7 @@ class BottomNavigationModule(private val bottomNavigationHolderFragment: BottomN
         return BottomNavigationHolderNavigator(
                 bottomNavigationHolderFragment.activity!!,
                 bottomNavigationHolderFragment.childFragmentManager,
-                R.id.holderBottomNavigationTab,
+                R.id.holderBottomNavigationContent,
                 bottomNavigationHolderFragment
         )
     }

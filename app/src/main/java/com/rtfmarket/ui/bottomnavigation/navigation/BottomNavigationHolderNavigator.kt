@@ -23,7 +23,7 @@ class BottomNavigationHolderNavigator(private val fragmentActivity: FragmentActi
     private var profileFragment: BottomNavigationTabFragment? = null
 
     fun onCreate() {
-        catalogFragment = initFragment(Screens.CATEGORY.screenName)
+        catalogFragment = initFragment(Screens.CATALOG.screenName)
         cartFragment = initFragment(Screens.CART.screenName)
         profileFragment = initFragment(Screens.PROFILE.screenName)
     }
@@ -37,12 +37,12 @@ class BottomNavigationHolderNavigator(private val fragmentActivity: FragmentActi
             is SystemMessage -> Toast.makeText(fragmentActivity, command.message, Toast.LENGTH_LONG).show()
             is Replace -> {
                 val fragments = mapOf(
-                        Screens.CATEGORY.position to catalogFragment,
+                        Screens.CATALOG.position to catalogFragment,
                         Screens.CART.position to cartFragment,
                         Screens.PROFILE.position to profileFragment
                 )
                 when (command.screenKey) {
-                    Screens.CATEGORY.screenName -> attachFragment(fragments, Screens.CATEGORY.position)
+                    Screens.CATALOG.screenName -> attachFragment(fragments, Screens.CATALOG.position)
                     Screens.CART.screenName -> attachFragment(fragments, Screens.CART.position)
                     Screens.PROFILE.screenName -> attachFragment(fragments, Screens.PROFILE.position)
                 }

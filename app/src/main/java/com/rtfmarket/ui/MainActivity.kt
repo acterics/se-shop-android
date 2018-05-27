@@ -35,7 +35,7 @@ class MainActivity: BaseActivity(), MainView {
     override fun onCreateInitialized(savedInstanceState: Bundle?) {
         super.onCreateInitialized(savedInstanceState)
         setContentView(R.layout.activity_main)
-        router.navigateTo(Screens.BOTTOM_NAVIGATION.screenName)
+        router.replaceScreen(Screens.BOTTOM_NAVIGATION.screenName)
     }
 
     override fun injectComponent() { component?.inject(this) }

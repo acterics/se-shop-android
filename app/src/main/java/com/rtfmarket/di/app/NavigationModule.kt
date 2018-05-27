@@ -11,10 +11,6 @@ import javax.inject.Singleton
 @Module
 class NavigationModule {
 
-    companion object {
-        const val NAME_ROUTER_ROOT = "router_root"
-    }
-
 
     @Singleton
     @Provides
@@ -22,13 +18,6 @@ class NavigationModule {
 
     @Singleton
     @Provides
-    @Named(NAME_ROUTER_ROOT)
     fun provideRootRouter(cicerone: Cicerone<Router>): Router = cicerone.router
-
-    @Singleton
-    @Provides
-    fun provideNavigatorHolder(cicerone: Cicerone<Router>): NavigatorHolder = cicerone.navigatorHolder
-
-
 
 }

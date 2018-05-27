@@ -4,9 +4,6 @@ package com.rtfmarket.common
 import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatActivity
 
-/**
- * Created by Oleg Lipskiy on 25.01.18
- */
 abstract class BaseActivity : MvpAppCompatActivity() {
 
     private var isNavigatorWasSetup = false

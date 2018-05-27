@@ -8,9 +8,6 @@ import com.rtfmarket.domain.executor.ExecutionScheduler
 import com.rtfmarket.domain.executor.ThreadScheduler
 import javax.inject.Singleton
 
-/**
-* Created by Oleg Lipskiy on 25.01.18.
-*/
 @Module
 class AppModule(private val application: Application) {
 

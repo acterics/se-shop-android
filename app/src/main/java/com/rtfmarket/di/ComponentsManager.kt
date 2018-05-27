@@ -5,10 +5,8 @@ import android.content.Context
 import com.rtfmarket.di.app.AppComponent
 import com.rtfmarket.di.app.AppModule
 import com.rtfmarket.di.app.DaggerAppComponent
+import com.rtfmarket.di.app.NavigationModule
 
-/**
-* Created by Oleg Lipskiy on 25.01.18.
-*/
 object ComponentsManager {
 
     val components: MutableMap<String, Any?> = mutableMapOf()
@@ -19,6 +17,7 @@ object ComponentsManager {
     fun initAppComponent(app: Application) {
         appComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(app))
+                .navigationModule(NavigationModule())
                 .build()
     }
 

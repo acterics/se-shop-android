@@ -5,9 +5,7 @@ import android.os.Bundle
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.rtfmarket.di.ComponentsManager
 
-/**
- * Created by Oleg Lipskiy on 25.01.18
- */
+
 abstract class BaseFragment: MvpAppCompatFragment() {
 
     protected abstract fun injectComponent()

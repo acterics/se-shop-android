@@ -14,5 +14,4 @@ class MainModule(private val mainActivity: MainActivity) {
     fun provideMainNavigator(): MainNavigator {
         return MainNavigator(mainActivity)
     }
-
 }

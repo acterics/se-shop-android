@@ -1,32 +1,129 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
+apply plugin: "de.mannodermaus.android-junit5"
 
 android {
-    compileSdkVersion 27
+    def configurations = rootProject.extensions.getByName('ext')
+
+    compileSdkVersion configurations['androidCompileSdkVersion']
+    buildToolsVersion configurations['androidBuildToolsVersion']
     defaultConfig {
-        applicationId "com.rtfmarket"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        applicationId configurations['androidApplicationId']
+        minSdkVersion configurations['androidMinSdkVersion']
+        targetSdkVersion configurations['androidTargetSdkVersion']
+        versionCode configurations['androidVersionCode']
+        versionName configurations['androidVersionName']
+        testInstrumentationRunner configurations['testInstrumentationRunner']
+        testApplicationId configurations['testApplicationId']
     }
     buildTypes {
+        debug {
+            ext.betaDistributionGroupAliases = "se-shop-testers"
+            ext.betaDistributionNotifications=false
+        }
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek'
+                }
+            }
+        }
+        testOptions {
+            unitTests.returnDefaultValues = true
         }
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
+    def dependencies = rootProject.ext.dependencies
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation dependencies.kotlinStdLib
+    implementation dependencies.kotlinReflection
+
+    implementation dependencies.glide
+    implementation(dependencies.fastAdapter) {
+        transitive = true
+    }
+    implementation dependencies.fastAdapterCommons
+    implementation dependencies.fastAdapterExtensions
+    implementation dependencies.fastAdapterExtensionsExpandable
+
+    implementation dependencies.recyclerViewAnimators
+
+    implementation dependencies.bottomNavigation
+
+    implementation dependencies.supportRecyclerView
+    implementation dependencies.supportV4
+    implementation dependencies.supportDesign
+    implementation dependencies.supportAppCompatV7
+    implementation dependencies.supportConstraintLayout
+    implementation dependencies.supportMultidex
+
+    implementation dependencies.room
+    implementation dependencies.roomRx
+    kapt dependencies.roomCompiler
+
+    implementation dependencies.moxy
+    implementation dependencies.moxyAppCompat
+    implementation dependencies.moxyAndroid
+    kapt dependencies.moxyCompiler
+
+    implementation dependencies.cicerone
+
+    implementation dependencies.dagger
+    implementation dependencies.supportAnnotations
+    compileOnly dependencies.javaxAnnotations
+    kapt dependencies.daggerCompiler
+
+    implementation dependencies.rxJava
+    implementation dependencies.rxKotlin
+    implementation dependencies.rxAndroid
+
+    implementation dependencies.retrofit
+    implementation dependencies.retrofitConverterGson
+    implementation dependencies.retrofitAdapterRx
+    implementation dependencies.okHttpLoggingInterceptor
+
+    implementation dependencies.facebookLoginSdk
+
+    implementation dependencies.stetho
+    implementation(dependencies.crashlitics) {
+        transitive = true
+    }
+
+
+    testImplementation dependencies.rxTest
+    testImplementation(dependencies.spek) {
+        exclude group: "org.jetbrains.kotlin"
+    }
+    testImplementation(dependencies.spekJUnitPlatformEngine) {
+        exclude group: "org.junit.platform"
+        exclude group: "org.jetbrains.kotlin"
+    }
+    testImplementation dependencies.kotlinReflection
+    testImplementation dependencies.jUnitPlatformEngine
+    testImplementation dependencies.expekt
+
+    testImplementation dependencies.mockk
+
 }

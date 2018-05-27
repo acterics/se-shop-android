@@ -1,0 +1,117 @@
+ext {
+    //Android
+    androidBuildToolsVersion = '27.0.3'
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 27
+    androidCompileSdkVersion = 27
+
+    kotlinVersion = '1.2.40'
+
+    androidSupportLibraryVersion = '27.0.2'
+    androidSupportConstrainLayoutVersion = '1.1.0'
+    androidSupportMultidexVersion = '1.0.1'
+
+    recyclerViewAnimatorsVersion = '2.3.0'
+
+
+    glideVersion = '3.8.0'
+    fastAdapterVersion = '3.2.5'
+    bottomNavigationVersion = '2.2.1.2'
+
+    roomVersion = '1.0.0'
+    moxyVersion = '1.5.3'
+    ciceroneVersion = '3.0.0'
+    daggerVersion = '2.11'
+    javaxAnnotationsVersion = '1.0'
+
+    rxJavaVersion = '2.1.5'
+    rxKotlinVersion = '2.1.0'
+    rxAndroidVersion = '2.0.1'
+
+    retrofitVersion = '2.3.0'
+    okHttpVersion = '3.9.1'
+
+    facebookSdkVersion = '4.30.0'
+
+    //Debug
+    stethoVersion = '1.5.0'
+    crashliticsVersion = '2.7.0@aar'
+
+    //Testing
+    jUnitVersion = '4.12'
+    jUnitPlatformVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+    rxTestVersion = '1.0.5'
+    kluentVersion = '1.34'
+    expektVersion = '0.5.0'
+    spekVersion = '1.1.5'
+    mockkVersion = '1.7.10'
+
+
+
+    dependencies = [
+
+            kotlinStdLib: "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
+            kotlinReflection: "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
+
+
+            glide: "com.github.bumptech.glide:glide:$glideVersion",
+            fastAdapter: "com.mikepenz:fastadapter:$fastAdapterVersion",
+            fastAdapterCommons: "com.mikepenz:fastadapter-commons:$fastAdapterVersion",
+            fastAdapterExtensions: "com.mikepenz:fastadapter-extensions:$fastAdapterVersion",
+            fastAdapterExtensionsExpandable: "com.mikepenz:fastadapter-extensions-expandable:$fastAdapterVersion",
+            bottomNavigation: "com.github.acterics:ahbottomnavigation:$bottomNavigationVersion",
+            
+            recyclerViewAnimators: "jp.wasabeef:recyclerview-animators:$recyclerViewAnimatorsVersion",
+           
+            supportRecyclerView: "com.android.support:recyclerview-v7:$androidSupportLibraryVersion",
+            supportV4: "com.android.support:support-v4:$androidSupportLibraryVersion",
+            supportDesign: "com.android.support:design:$androidSupportLibraryVersion",
+
+
+
+            supportAppCompatV7: "com.android.support:appcompat-v7:$androidSupportLibraryVersion",
+            supportConstraintLayout: "com.android.support.constraint:constraint-layout:$androidSupportConstrainLayoutVersion",
+            supportAnnotations: "com.android.support:support-annotations:$androidSupportLibraryVersion",
+            supportMultidex: "com.android.support:multidex:$androidSupportMultidexVersion",
+            moxy: "com.arello-mobile:moxy-app-compat:$moxyVersion",
+            moxyAppCompat: "com.arello-mobile:moxy-app-compat:$moxyVersion",
+            moxyAndroid: "com.arello-mobile:moxy-android:$moxyVersion",
+            moxyCompiler: "com.arello-mobile:moxy-compiler:$moxyVersion",
+            cicerone: "ru.terrakok.cicerone:cicerone:$ciceroneVersion",
+            dagger: "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+            javaxAnnotations: "javax.annotation:jsr250-api:$javaxAnnotationsVersion",
+
+            rxJava: "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            rxKotlin: "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+
+            room: "android.arch.persistence.room:runtime:$roomVersion",
+            roomRx: "android.arch.persistence.room:rxjava2:$roomVersion",
+            roomCompiler: "android.arch.persistence.room:compiler:$roomVersion",
+
+            retrofit: "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitAdapterRx: "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+
+            facebookLoginSdk: "com.facebook.android:facebook-login:$facebookSdkVersion",
+
+            espresso: "com.android.support.test.espresso:espresso-core:$espressoVersion",
+            jUnit: "junit:junit:$jUnitVersion",
+            rxTest: "com.rubylichtenstein:rxtest:$rxTestVersion",
+            kluent: "org.amshove.kluent:kluent:$kluentVersion",
+            kluentAndroid: "org.amshove.kluent:kluent-android:$kluentVersion",
+            expekt: "com.winterbe:expekt:$expektVersion",
+            spek: "org.jetbrains.spek:spek-api:$spekVersion",
+            spekJUnitPlatformEngine: "org.jetbrains.spek:spek-junit-platform-engine:$spekVersion",
+            jUnitPlatformRunner: "org.junit.platform:junit-platform-runner:$jUnitPlatformVersion",
+            jUnitPlatformEngine: "org.junit.platform:junit-platform-engine:$jUnitPlatformVersion",
+            mockk: "io.mockk:mockk:$mockkVersion",
+
+            stetho: "com.facebook.stetho:stetho:$stethoVersion",
+            crashlitics: "com.crashlytics.sdk.android:crashlytics:$crashliticsVersion"
+    ]
+
+}

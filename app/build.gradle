@@ -51,6 +51,7 @@ androidExtensions {
 
 kapt {
     correctErrorTypes = true
+    generateStubs = true
 }
 
 dependencies {

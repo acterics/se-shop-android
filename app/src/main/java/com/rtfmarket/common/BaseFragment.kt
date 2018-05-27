@@ -2,68 +2,52 @@ package com.rtfmarket.common
 
 
 import android.os.Bundle
-import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.MvpAppCompatFragment
+import com.rtfmarket.di.ComponentsManager
 
 /**
  * Created by Oleg Lipskiy on 25.01.18
  */
-abstract class BaseActivity : MvpAppCompatActivity() {
-
-    private var isNavigatorWasSetup = false
+abstract class BaseFragment: MvpAppCompatFragment() {
 
     protected abstract fun injectComponent()
     protected open fun rejectComponent() {}
+    protected open fun setupNavigator() {}
+    protected open fun removeNavigator() {}
 
-    protected abstract fun setupNavigator()
-
-
-
-    final override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         onCreateWithoutInjections()
-
         injectComponent()
-        setupNavigatorHolderWithStateChange()
-
         onCreateWithoutPresenter()
-
         super.onCreate(savedInstanceState)
-
         onCreateInitialized(savedInstanceState)
     }
 
     override fun onResume() {
-        takeIf { !isNavigatorWasSetup }?.setupNavigatorHolderWithStateChange()
+        setupNavigator()
         super.onResume()
     }
 
-    override fun onStart() {
-        takeIf { !isNavigatorWasSetup }?.setupNavigatorHolderWithStateChange()
-        super.onStart()
-    }
-
-
     override fun onPause() {
-        isNavigatorWasSetup = false
+        removeNavigator()
         super.onPause()
     }
 
-
     override fun onDestroy() {
+        if (isRemoving || activity!!.isFinishing && !isStateSaved) {
+            rejectComponent()
+        }
         super.onDestroy()
-        rejectComponent()
     }
 
     protected open fun onCreateWithoutPresenter() {}
     protected open fun onCreateWithoutInjections() {}
     protected open fun onCreateInitialized(savedInstanceState: Bundle?) {}
 
-
-    private fun setupNavigatorHolderWithStateChange() {
-        setupNavigator()
-        isNavigatorWasSetup = true
+    @Suppress("UNCHECKED_CAST")
+    protected fun <T>getComponent(componentName: String): T? {
+        return ComponentsManager.components[componentName] as T?
     }
-
-
 
 
 }

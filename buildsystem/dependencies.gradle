@@ -5,7 +5,7 @@ ext {
     androidTargetSdkVersion = 27
     androidCompileSdkVersion = 27
 
-    kotlinVersion = '1.2.40'
+    kotlinVersion = '1.2.30'
 
     androidSupportLibraryVersion = '27.0.2'
     androidSupportConstrainLayoutVersion = '1.1.0'

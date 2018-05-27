@@ -1,9 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.rtfmarket">
+    package="com.rtfmarket">
 
-  <application
-    android:allowBackup="true"
-    android:label="@string/app_name"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme" />
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name="RtfmarketApplication">
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="f1c07163b1ed6df9d047b3bb99202534bb6fbf4c" />
+    </application>
 </manifest>

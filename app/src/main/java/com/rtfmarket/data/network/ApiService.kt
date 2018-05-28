@@ -17,6 +17,9 @@ interface ApiService {
                     @Query("sort") sort: String,
                     @Query("order") order: String): Single<BaseResponse<Category>>
 
+    @GET("categories")
+    fun getCategories(): Single<BaseResponse<List<Category>>>
+
     @GET("products/{slug}/details")
     fun getProductDetails(@Path("slug") productSlug: String): Single<BaseResponse<ProductDetails>>
 

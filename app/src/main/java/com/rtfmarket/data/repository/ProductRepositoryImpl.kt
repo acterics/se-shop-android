@@ -23,4 +23,8 @@ class ProductRepositoryImpl
     override fun getProduct(productSlug: String): Single<Product> {
         return apiService.getProduct(productSlug).verify()
     }
+
+    override fun getCategories(): Single<List<Category>> {
+        return apiService.getCategories().verify()
+    }
 }

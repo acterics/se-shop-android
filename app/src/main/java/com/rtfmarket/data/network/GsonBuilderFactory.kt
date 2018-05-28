@@ -6,7 +6,7 @@ import javax.inject.Inject
 class GsonBuilderFactory
 @Inject constructor() {
 
-    fun newInstance(): GsonBuilder {
+    fun create(): GsonBuilder {
         return GsonBuilder()
     }
 }

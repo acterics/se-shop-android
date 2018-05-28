@@ -8,10 +8,13 @@ import io.reactivex.Single
 interface ProductRepository {
 
 
-    fun getProductDetails(productSlug: String): Single<ProductDetails>
+
     fun getCategory(categorySlug: String,
                     filter: List<String>,
                     sort: String,
                     order: String): Single<Category>
+    fun getCategories(): Single<List<Category>>
+
     fun getProduct(productSlug: String): Single<Product>
+    fun getProductDetails(productSlug: String): Single<ProductDetails>
 }

@@ -1,6 +1,7 @@
 package com.rtfmarket.presentation.bottomnavigation
 
 import android.os.Handler
+import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.rtfmarket.common.constants.Screens
 import com.rtfmarket.common.constants.Screens.*
@@ -11,6 +12,7 @@ import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationTabRouter
 import io.reactivex.rxkotlin.subscribeBy
 import ru.terrakok.cicerone.Router
 
+@InjectViewState
 class BottomNavigationHolderPresenter(private val globalRouter: Router,
                                       private val tabHolderRouter: BottomNavigationRouter):
         MvpPresenter<BottomNavigationHolderView>() {
@@ -43,8 +45,8 @@ class BottomNavigationHolderPresenter(private val globalRouter: Router,
         }?.let { true } ?: false
     }
 
-    fun onBackPressed() {
-        tabHolderRouter.exit()
+    fun onBackPressed(): Boolean {
+        return tabHolderRouter.exit().let { true }
     }
 
 

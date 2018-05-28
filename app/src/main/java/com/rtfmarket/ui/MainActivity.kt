@@ -3,6 +3,7 @@ package com.rtfmarket.ui
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.rtfmarket.R
+import com.rtfmarket.common.BackPressListener
 import com.rtfmarket.common.BaseActivity
 import com.rtfmarket.common.constants.Screens
 import com.rtfmarket.common.extension.dsl.subcomponent
@@ -42,4 +43,10 @@ class MainActivity: BaseActivity(), MainView {
     override fun rejectComponent() { component = null }
 
     override fun setupNavigator() { cicerone.navigatorHolder.setNavigator(mainNavigator) }
+
+    override fun onBackPressed() {
+        supportFragmentManager.findFragmentById(R.id.holderContent) ?.let {
+            (it as? BackPressListener)?.onBackPressed()
+        } ?: super.onBackPressed()
+    }
 }

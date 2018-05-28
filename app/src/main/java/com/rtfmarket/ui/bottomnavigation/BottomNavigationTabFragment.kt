@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rtfmarket.R
+import com.rtfmarket.common.BackPressListener
 import com.rtfmarket.common.BaseFragment
 import com.rtfmarket.common.extension.dsl.lazySubcomponent
 import com.rtfmarket.di.bottomnavigation.BottomNavigationComponent
@@ -19,7 +20,7 @@ import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 import javax.inject.Named
 
-class BottomNavigationTabFragment: BaseFragment() {
+class BottomNavigationTabFragment: BaseFragment(), BackPressListener {
 
     companion object {
         const val EXTRA_TAB_NAME = "EXTRA_TAB_NAME"
@@ -64,5 +65,15 @@ class BottomNavigationTabFragment: BaseFragment() {
         }
     }
 
-
+    override fun onBackPressed(): Boolean {
+        val isCallbackPassed =  childFragmentManager.findFragmentById(R.id.holderBottomNavigationTab)?.let {
+            (it as? BackPressListener)?.onBackPressed()
+        } ?: true
+        return if (isCallbackPassed) {
+            tabHolderRouter.exit()
+            false
+        } else {
+            true
+        }
+    }
 }

@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.rtfmarket.R
+import com.rtfmarket.common.BackPressListener
 import com.rtfmarket.common.BaseFragment
 import com.rtfmarket.common.constants.Screens
 import com.rtfmarket.common.extension.dsl.subcomponent
@@ -29,7 +30,8 @@ import javax.inject.Inject
 class BottomNavigationHolderFragment:
         BaseFragment(),
         BottomNavigationHolderNavigator.BottomNavigationCallback,
-        BottomNavigationHolderView {
+        BottomNavigationHolderView,
+        BackPressListener {
 
     private var component by subcomponent<BottomNavigationComponent, MainComponent>(
             BottomNavigationComponent.NAME,
@@ -81,7 +83,7 @@ class BottomNavigationHolderFragment:
                     AHBottomNavigationItem(R.string.cart, R.drawable.ic_nav_cart, true),
                     AHBottomNavigationItem(R.string.profile, R.drawable.ic_nav_profile, true)
             ))
-            titleState = com.aurelhubert.ahbottomnavigation.AHBottomNavigation.TitleState.ALWAYS_HIDE
+            titleState = com.aurelhubert.ahbottomnavigation.AHBottomNavigation.TitleState.ALWAYS_SHOW
             setNotificationBackgroundColor(context.getColorCompat(R.color.colorAccent))
             setOnTabSelectedListener(onTabSelectListener)
         }
@@ -98,5 +100,11 @@ class BottomNavigationHolderFragment:
 
     override fun showExitConfirmMessage() {
         Toast.makeText(context, R.string.exit_confirm_message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onBackPressed(): Boolean {
+        return childFragmentManager.findFragmentById(R.id.holderBottomNavigationContent) ?.let {
+            (it as? BackPressListener)?.onBackPressed()
+        } ?: presenter.onBackPressed()
     }
 }

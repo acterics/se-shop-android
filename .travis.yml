@@ -6,3 +6,14 @@ android:
     - tools
     - build-tools-27.0.3
     - android-27
+licenses:
+  - android-sdk-preview-license-c81a61d9
+  - android-sdk-license-.+
+  - google-gdk-license-.+
+after_install:
+  - ./gradlew crashlyticsUploadDistributionDebug
+before_install:
+  - chmod +x gradlew
+  - chmod +x ./scripts/generate-release-notes.sh
+  - echo apiSecret=$FABRIC_API_SECRET>$TRAVIS_BUILD_DIR/app/fabric.properties
+  - ./scripts/generate-release-notes.sh

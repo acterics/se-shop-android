@@ -77,6 +77,7 @@ class BottomNavigationHolderFragment:
 
         with(vBottomNavigation) {
             isTranslucentNavigationEnabled = true
+            accentColor = context.getColorCompat(R.color.colorPrimary)
 
             addItems(listOf(
                     AHBottomNavigationItem(R.string.catalog, R.drawable.ic_nav_catalog, true),
@@ -84,7 +85,7 @@ class BottomNavigationHolderFragment:
                     AHBottomNavigationItem(R.string.profile, R.drawable.ic_nav_profile, true)
             ))
             titleState = com.aurelhubert.ahbottomnavigation.AHBottomNavigation.TitleState.ALWAYS_SHOW
-            setNotificationBackgroundColor(context.getColorCompat(R.color.colorAccent))
+            setNotificationBackgroundColor(context.getColorCompat(R.color.colorPrimary))
             setOnTabSelectedListener(onTabSelectListener)
         }
     }

@@ -66,14 +66,11 @@ class BottomNavigationTabFragment: BaseFragment(), BackPressListener {
     }
 
     override fun onBackPressed(): Boolean {
-        val isCallbackPassed =  childFragmentManager.findFragmentById(R.id.holderBottomNavigationTab)?.let {
-            (it as? BackPressListener)?.onBackPressed()
-        } ?: true
-        return if (isCallbackPassed) {
-            tabHolderRouter.exit()
-            false
-        } else {
-            true
+        val backPressListenerFragment = childFragmentManager.findFragmentById(R.id.holderBottomNavigationTab) as? BackPressListener
+        val isBackPressConsumed = backPressListenerFragment?.onBackPressed() ?: false
+        if (!isBackPressConsumed) {
+            tabRouter.exit()
         }
+        return true
     }
 }

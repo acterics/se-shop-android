@@ -24,7 +24,7 @@ class CatalogPresenter(private val catalogInteractor: CatalogInteractor,
     }
 
     fun onCategoryClick(category: Category): Boolean {
-        return tabRouter.replaceScreen(Screens.CATEGORY.screenName, category).let { true }
+        return tabRouter.navigateTo(Screens.CATEGORY.screenName, category).let { true }
     }
 
 

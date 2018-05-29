@@ -3,6 +3,7 @@ package com.rtfmarket.di.bottomnavigationtab
 import com.rtfmarket.common.navigation.CiceroneHolder
 import com.rtfmarket.di.scope.BottomNavigationTabScope
 import com.rtfmarket.ui.bottomnavigation.BottomNavigationTabFragment
+import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationRouter
 import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationTabNavigator
 import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationTabRouter
 import dagger.Module
@@ -28,8 +29,8 @@ class BottomNavigationTabModule(private val bottomNavigationTabFragment: BottomN
 
     @BottomNavigationTabScope
     @Provides
-    fun provideNavigator(): BottomNavigationTabNavigator {
-        return BottomNavigationTabNavigator(bottomNavigationTabFragment)
+    fun provideNavigator(tabHolderRouter: BottomNavigationRouter): BottomNavigationTabNavigator {
+        return BottomNavigationTabNavigator(bottomNavigationTabFragment, tabHolderRouter)
     }
 
 }

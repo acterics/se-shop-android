@@ -13,7 +13,8 @@ import com.rtfmarket.ui.bottomnavigation.catalog.CatalogFragment
 import com.rtfmarket.ui.bottomnavigation.category.CategoryFragment
 import com.rtfmarket.ui.bottomnavigation.profile.ProfileFragment
 
-class BottomNavigationTabNavigator(private val tabFragment: BottomNavigationTabFragment):
+class BottomNavigationTabNavigator(private val tabFragment: BottomNavigationTabFragment,
+                                   private val tabHolderRouter: BottomNavigationRouter):
         AppSupportNavigator(
                 tabFragment.activity!!,
                 tabFragment.childFragmentManager,
@@ -29,6 +30,10 @@ class BottomNavigationTabNavigator(private val tabFragment: BottomNavigationTabF
             Screens.PROFILE.screenName -> ProfileFragment()
             else -> null
         }
+    }
+
+    override fun exit() {
+        tabHolderRouter.exit()
     }
 
 

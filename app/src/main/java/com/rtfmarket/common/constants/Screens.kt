@@ -8,6 +8,7 @@ enum class Screens(val screenName: String, val position: Int = -1) {
     CART("cart", 1),
     PROFILE("profile", 2),
     CATEGORY("category"),
-    ORDERING("ordering")
+    ORDERING("ordering"),
+    PRODUCT("product")
 
 }

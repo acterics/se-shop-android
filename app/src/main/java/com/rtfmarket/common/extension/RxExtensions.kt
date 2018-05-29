@@ -1,5 +1,7 @@
 package com.rtfmarket.common.extension
 
+import com.rtfmarket.common.exception.ValidationError
+import com.rtfmarket.common.extension.rx.SingleValidationOperator
 import com.rtfmarket.common.extension.rx.SingleVerificationOperator
 import com.rtfmarket.data.network.model.BaseResponse
 import io.reactivex.Flowable
@@ -19,6 +21,11 @@ fun <F, L, T> Flowable<L>.mapList(transform: (input: F) -> T): Flowable<List<T>>
 
 fun <T> Single<BaseResponse<T>>.verify(): Single<T> {
     return lift(SingleVerificationOperator())
+}
+
+fun <T> Single<T>.validate(exception: Throwable? = null,
+                           predicate: T.() -> Boolean): Single<T> {
+    return lift(SingleValidationOperator(exception, predicate))
 }
 
 

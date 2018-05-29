@@ -10,21 +10,15 @@ licenses:
   - android-sdk-preview-license-c81a61d9
   - android-sdk-license-.+
   - google-gdk-license-.+
-after_failure:
-  - echo $(echo $TRAVIS_COMMIT_RANGE | tr -s "." "\n" | wc -l) >> $HOME/.failure-cache/failed-commits
 after_success:
   - chmod +x gradlew
-  - chmod +x ./scripts/generate-release-notes.sh
   - echo apiSecret=$FABRIC_API_SECRET>$TRAVIS_BUILD_DIR/app/fabric.properties
-  - ./scripts/generate-release-notes.sh $TRAVIS_COMMIT_RANGE $TRAVIS_BUILD_DIR
-  - rm $HOME/.failure-cache/failed-commits
   - ./gradlew crashlyticsUploadDistributionDebug
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.failure-cache
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.android/build-cache

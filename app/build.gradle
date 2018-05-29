@@ -25,7 +25,6 @@ android {
         debug {
             ext.betaDistributionGroupAliases = "se-shop-testers"
             ext.betaDistributionNotifications=false
-            ext.betaDistributionReleaseNotesFilePath = "release_notes.txt"
         }
         release {
             shrinkResources true

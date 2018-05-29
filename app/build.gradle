@@ -45,6 +45,10 @@ android {
             unitTests.returnDefaultValues = true
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 androidExtensions {
@@ -55,6 +59,8 @@ kapt {
     correctErrorTypes = true
     generateStubs = true
 }
+
+
 
 dependencies {
     def dependencies = rootProject.ext.dependencies

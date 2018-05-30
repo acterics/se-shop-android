@@ -7,6 +7,7 @@ import com.rtfmarket.R
 import com.rtfmarket.common.constants.Screens
 import com.rtfmarket.common.navigation.AppSupportNavigator
 import com.rtfmarket.domain.model.Category
+import com.rtfmarket.domain.model.Product
 import com.rtfmarket.ui.bottomnavigation.BottomNavigationTabFragment
 import com.rtfmarket.ui.bottomnavigation.cart.CartFragment
 import com.rtfmarket.ui.bottomnavigation.catalog.CatalogFragment
@@ -29,7 +30,7 @@ class BottomNavigationTabNavigator(private val tabFragment: BottomNavigationTabF
             Screens.CATALOG.screenName -> CatalogFragment.createInstance(tabFragment.tabName)
             Screens.CART.screenName -> CartFragment()
             Screens.PROFILE.screenName -> ProfileFragment()
-            Screens.PRODUCT.screenName -> ProductFragment()
+            Screens.PRODUCT.screenName -> ProductFragment.createInstance(tabFragment.tabName, data as Product)
             else -> null
         }
     }

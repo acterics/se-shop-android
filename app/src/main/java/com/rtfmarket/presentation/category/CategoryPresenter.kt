@@ -26,7 +26,7 @@ class CategoryPresenter(private val category: Category,
 
 
     fun onProductClick(product: Product): Boolean {
-        return tabRouter.navigateTo(Screens.PRODUCT.screenName).let { true }
+        return tabRouter.navigateTo(Screens.PRODUCT.screenName, product).let { true }
     }
 
     private fun onCategoryLoaded(category: Category) {

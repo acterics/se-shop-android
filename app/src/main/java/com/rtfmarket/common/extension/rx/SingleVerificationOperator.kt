@@ -19,7 +19,12 @@ class SingleVerificationOperator<T>: SingleOperator<T, BaseResponse<T>> {
 
             override fun onSuccess(response: BaseResponse<T>) {
                 if (response.data == null) {
-                    observer.onError(NetworkException(response.message!!))
+                    val exception = if (response.message != null) {
+                        NetworkException(response.message)
+                    } else {
+                        NetworkException("Unknown error")
+                    }
+                    observer.onError(exception)
                 } else {
                     observer.onSuccess(response.data)
                 }

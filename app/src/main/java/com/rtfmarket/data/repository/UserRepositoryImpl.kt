@@ -19,4 +19,8 @@ class UserRepositoryImpl
             Completable.complete()
         }
     }
+
+    override fun signIn(email: String, password: String): Completable {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

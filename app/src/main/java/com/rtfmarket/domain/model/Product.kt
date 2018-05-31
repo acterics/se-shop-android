@@ -9,4 +9,5 @@ data class Product(val id: String,
                    val title: String,
                    val slug: String,
                    val description: String,
+                   val price: Int,
                    val media: Media): Parcelable

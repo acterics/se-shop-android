@@ -6,4 +6,5 @@ interface UserRepository {
 
 
     fun isAuthorized(): Completable
+    fun signIn(email: String, password: String): Completable
 }

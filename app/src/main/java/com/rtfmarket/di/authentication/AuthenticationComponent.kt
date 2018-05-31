@@ -2,6 +2,8 @@ package com.rtfmarket.di.authentication
 
 import com.rtfmarket.di.scope.AuthenticationScope
 import com.rtfmarket.ui.authorization.AuthenticationFragment
+import com.rtfmarket.ui.authorization.SignInFragment
+import com.rtfmarket.ui.authorization.SignUpFragment
 import dagger.Subcomponent
 
 @AuthenticationScope
@@ -22,5 +24,7 @@ interface AuthenticationComponent {
 
 
     fun inject(authenticationFragment: AuthenticationFragment)
+    fun inject(signInFragment: SignInFragment)
+    fun inject(signUpFragment: SignUpFragment)
 
 }

@@ -20,7 +20,7 @@ class OkHttpClientBuilderFactory
 
             val original = chain.request()
             val request = original.newBuilder()
-                    .header("Authorization", "Bearer ${preferencesDataStore.getAuthToken()}")
+                    .header("Authorization", "${preferencesDataStore.getAuthToken()}")
                     .header("Content-Type", "application/json")
                     .method(original.method(), original.body())
                     .build()

@@ -21,8 +21,8 @@ buildscript {
 allprojects {
      ext {
         androidApplicationId = 'com.rtfmarket'
-        androidVersionCode = 4
-        androidVersionName = "0.0-$androidVersionCode"
+        androidVersionCode = 5
+        androidVersionName = "0.1-$androidVersionCode"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
         testApplicationId = 'com.rtfmarket.test'
     }

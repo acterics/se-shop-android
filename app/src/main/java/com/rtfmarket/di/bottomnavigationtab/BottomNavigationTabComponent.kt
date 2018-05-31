@@ -1,5 +1,6 @@
 package com.rtfmarket.di.bottomnavigationtab
 
+import com.rtfmarket.di.cart.CartComponent
 import com.rtfmarket.di.catalog.CatalogComponent
 import com.rtfmarket.di.category.CategoryComponent
 import com.rtfmarket.di.product.ProductComponent
@@ -24,6 +25,7 @@ interface BottomNavigationTabComponent {
     fun categoryComponentBuilder(): CategoryComponent.Builder
     fun productComponentBuilder(): ProductComponent.Builder
     fun profileHolderComponentBuilder(): ProfileHolderComponent.Builder
+    fun cartComponentBuilder(): CartComponent.Builder
 
     fun inject(bottomNavigationTabFragment: BottomNavigationTabFragment)
 }

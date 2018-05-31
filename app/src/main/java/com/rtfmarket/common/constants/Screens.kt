@@ -14,6 +14,8 @@ enum class Screens(val screenName: String, val position: Int = -1) {
     ORDERING("ordering"),
     PRODUCT("product"),
 
-    AUTHENTICATION("authentication")
+    AUTHENTICATION("authentication"),
+    SIGN_IN("sign_in"),
+    SIGN_UP("sign_up")
 
 }

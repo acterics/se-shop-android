@@ -28,7 +28,7 @@ class BottomNavigationTabNavigator(private val tabFragment: BottomNavigationTabF
         return when(screenKey) {
             Screens.CATEGORY.screenName -> CategoryFragment.createInstance(tabFragment.tabName, data as Category)
             Screens.CATALOG.screenName -> CatalogFragment.createInstance(tabFragment.tabName)
-            Screens.CART.screenName -> CartFragment()
+            Screens.CART.screenName -> CartFragment.createInstance(tabFragment.tabName)
             Screens.PROFILE_HOLDER.screenName -> ProfileHolderFragment.createInstance(tabFragment.tabName)
             Screens.PRODUCT.screenName -> ProductFragment.createInstance(tabFragment.tabName, data as Product)
             else -> null

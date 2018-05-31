@@ -1,5 +1,6 @@
 package com.rtfmarket.ui.bottomnavigation.category
 
+import android.annotation.SuppressLint
 import android.view.View
 import com.bumptech.glide.Glide
 import com.mikepenz.fastadapter.items.AbstractItem
@@ -14,12 +15,17 @@ class ProductItem(internal val product:Product): AbstractItem<ProductItem, Defau
     override fun getViewHolder(v: View): DefaultViewHolder = DefaultViewHolder(v)
     override fun getLayoutRes(): Int = R.layout.item_product
 
+    @SuppressLint("SetTextI18n")
     override fun bindView(holder: DefaultViewHolder, payloads: MutableList<Any>) {
         super.bindView(holder, payloads)
         with(holder.itemView) {
-            Glide.with(context).load(product.media.main).into(imProduct)
+            Glide.with(context)
+                    .load(product.media.main)
+                    .centerCrop()
+                    .into(imProduct)
             tvProductTitle.text = product.title
             tvProductDescription.text = product.description
+            tvPrice.text = "${product.price} UAH"
         }
     }
 

@@ -26,10 +26,14 @@ class ProductPresenter(private val product: Product,
 
 
     private fun onProductDetailsLoaded(productDetails: ProductDetails) {
-
+        viewState.showProductDetails(productDetails)
     }
 
     private fun onProductDetailsLoadingError(error: Throwable) {
+
+    }
+
+    fun onAddToCart() {
 
     }
 

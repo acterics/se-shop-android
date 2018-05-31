@@ -2,6 +2,7 @@ package com.rtfmarket.ui.bottomnavigation.category
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -75,7 +76,7 @@ class CategoryFragment: BaseFragment(), CategoryView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvProducts.layoutManager = GridLayoutManager(context, 2)
+        rvProducts.layoutManager = LinearLayoutManager(context)
         rvProducts.adapter = productsAdapter
     }
 

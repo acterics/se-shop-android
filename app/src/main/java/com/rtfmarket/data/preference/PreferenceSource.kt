@@ -9,11 +9,16 @@ import javax.inject.Inject
 
 class PreferenceSource
 @Inject constructor(private val appContext: Context) {
+
+
+
     companion object {
         const val APP_PREFERENCES = "APP_PREFERENCES"
         const val AUTH_TOKEN = "AUTH_TOKEN"
         const val CURRENT_USER_ID = "CURRENT_USER_ID"
     }
+
+
 
 
     private val preferenceSubject = BehaviorSubject.create<String>()
@@ -24,6 +29,10 @@ class PreferenceSource
 
     private val preferences by lazy {
         appContext.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
+    }
+
+    init {
+        preferences.edit().putString(AUTH_TOKEN, "07DD6054637E8F085A669FB391173194A6DEE36F-1528377484536-x1").apply()
     }
 
     fun setAuthToken(authToken: String) {

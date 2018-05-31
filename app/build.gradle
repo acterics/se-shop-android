@@ -19,7 +19,7 @@ android {
         versionName configurations['androidVersionName']
         testInstrumentationRunner configurations['testInstrumentationRunner']
         testApplicationId configurations['testApplicationId']
-        buildConfigField "String", "BASE_URL", '"http://192.168.0.108:8081/"'
+        buildConfigField "String", "BASE_URL", '"http://192.168.0.107:8081/"'
     }
     buildTypes {
         debug {

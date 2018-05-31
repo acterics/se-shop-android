@@ -73,9 +73,13 @@ class CatalogFragment: BaseFragment(), CatalogView {
         super.onViewCreated(view, savedInstanceState)
         rvCategories.layoutManager = GridLayoutManager(context, 2)
         rvCategories.adapter = categoriesAdapter
+        holderSwipeToRefresh.setOnRefreshListener {
+            presenter.loadCategories()
+        }
     }
 
     override fun showCategories(items: List<CategoryItem>) {
+        holderSwipeToRefresh.isRefreshing = false
         categoriesAdapter.set(items)
     }
 }

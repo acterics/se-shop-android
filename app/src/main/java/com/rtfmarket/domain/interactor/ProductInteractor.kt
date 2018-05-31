@@ -25,7 +25,8 @@ class ProductInteractorImpl
 
 
     override fun addProductToCart(productSlug: String): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return cartRepository.addToCart(productSlug)
+                .compose(executionScheduler.highPriorityCompletable())
     }
 
 }

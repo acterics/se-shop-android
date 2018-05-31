@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvCount"
         app:layout_constraintStart_toEndOf="@+id/tvCount"
         app:layout_constraintTop_toTopOf="@+id/tvCount"
-        app:srcCompat="@drawable/ic_remove"
+        app:srcCompat="@drawable/ic_add"
         tools:ignore="ContentDescription" />
 
     <ImageButton
@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvCount"
         app:layout_constraintStart_toEndOf="@+id/imProduct"
         app:layout_constraintTop_toTopOf="@+id/tvCount"
-        app:srcCompat="@drawable/ic_add"
+        app:srcCompat="@drawable/ic_remove"
         tools:ignore="ContentDescription" />
 
     <TextView

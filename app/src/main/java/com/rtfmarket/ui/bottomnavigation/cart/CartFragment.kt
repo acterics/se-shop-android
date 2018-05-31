@@ -84,9 +84,13 @@ class CartFragment: BaseFragment(), CartView {
         rvCart.adapter = cartAdapter
 
         btCheckout.setOnClickListener { presenter.onStartOrder() }
+        holderSwipeToRefresh.setOnRefreshListener {
+            presenter.loadCart()
+        }
     }
 
     override fun showCart(items: List<CartItem>) {
+        holderSwipeToRefresh.isRefreshing = false
         cartAdapter.set(items)
     }
 

@@ -36,4 +36,12 @@ class CatalogPresenter(private val catalogInteractor: CatalogInteractor,
         error.printStackTrace()
     }
 
+    fun loadCategories() {
+        catalogInteractor.getCategories()
+                .subscribeBy(
+                        onSuccess = this::onCategoriesLoaded,
+                        onError = this::onCategoryLoadingError
+                )
+    }
+
 }

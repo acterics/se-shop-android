@@ -17,10 +17,7 @@ class CartPresenter(private val cartInteractor: CartInteractor,
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        cartInteractor.getCart().subscribeBy(
-                onSuccess = this::onCartLoaded,
-                onError = this::onCartLoadingError
-        )
+        loadCart()
     }
 
 
@@ -41,6 +38,13 @@ class CartPresenter(private val cartInteractor: CartInteractor,
                 .subscribeBy {
                     viewState.removeItem(position)
                 }
+    }
+
+    fun loadCart() {
+        cartInteractor.getCart().subscribeBy(
+                onSuccess = this::onCartLoaded,
+                onError = this::onCartLoadingError
+        )
     }
 
 }

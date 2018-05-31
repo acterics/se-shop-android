@@ -34,7 +34,10 @@ class ProductPresenter(private val product: Product,
     }
 
     fun onAddToCart() {
+        productInteractor.addProductToCart(product.slug)
+                .subscribeBy {
 
+                }
     }
 
 }

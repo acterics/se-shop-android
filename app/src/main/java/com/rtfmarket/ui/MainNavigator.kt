@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import com.rtfmarket.R
 import com.rtfmarket.common.constants.Screens
 import com.rtfmarket.common.navigation.AppSupportNavigator
+import com.rtfmarket.ui.authorization.AuthenticationFragment
 import com.rtfmarket.ui.bottomnavigation.BottomNavigationHolderFragment
 import com.rtfmarket.ui.ordering.OrderingFragment
 
@@ -18,6 +19,7 @@ class MainNavigator(mainActivity: MainActivity):
         return when(screenKey) {
             Screens.BOTTOM_NAVIGATION.screenName -> BottomNavigationHolderFragment()
             Screens.ORDERING.screenName -> OrderingFragment()
+            Screens.AUTHENTICATION.screenName -> AuthenticationFragment()
             else -> null
         }
     }

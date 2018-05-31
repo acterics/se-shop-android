@@ -9,6 +9,8 @@ enum class Screens(val screenName: String, val position: Int = -1) {
     PROFILE("profile", 2),
     CATEGORY("category"),
     ORDERING("ordering"),
-    PRODUCT("product")
+    PRODUCT("product"),
+
+    AUTHENTICATION("authentication")
 
 }

@@ -1,5 +1,6 @@
 package com.rtfmarket.di.main
 
+import com.rtfmarket.di.authentication.AuthenticationComponent
 import com.rtfmarket.di.bottomnavigation.BottomNavigationComponent
 import com.rtfmarket.di.scope.ActivityScope
 import com.rtfmarket.ui.MainActivity
@@ -25,6 +26,7 @@ interface MainComponent {
         }
 
         fun bottomNavigationComponentBuilder(): BottomNavigationComponent.Builder
+        fun authenticationComponentBuilder(): AuthenticationComponent.Builder
 
         fun inject(mainActivity: MainActivity)
 }

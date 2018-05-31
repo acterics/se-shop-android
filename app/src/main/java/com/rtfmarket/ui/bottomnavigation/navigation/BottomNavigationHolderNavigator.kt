@@ -25,7 +25,7 @@ class BottomNavigationHolderNavigator(private val fragmentActivity: FragmentActi
     fun onCreate() {
         catalogFragment = initFragment(Screens.CATALOG.screenName)
         cartFragment = initFragment(Screens.CART.screenName)
-        profileFragment = initFragment(Screens.PROFILE.screenName)
+        profileFragment = initFragment(Screens.PROFILE_HOLDER.screenName)
     }
 
     override fun applyCommands(commands: Array<out Command>?) { commands?.forEach { applyCommand(it) } }
@@ -39,12 +39,12 @@ class BottomNavigationHolderNavigator(private val fragmentActivity: FragmentActi
                 val fragments = mapOf(
                         Screens.CATALOG.position to catalogFragment,
                         Screens.CART.position to cartFragment,
-                        Screens.PROFILE.position to profileFragment
+                        Screens.PROFILE_HOLDER.position to profileFragment
                 )
                 when (command.screenKey) {
                     Screens.CATALOG.screenName -> attachFragment(fragments, Screens.CATALOG.position)
                     Screens.CART.screenName -> attachFragment(fragments, Screens.CART.position)
-                    Screens.PROFILE.screenName -> attachFragment(fragments, Screens.PROFILE.position)
+                    Screens.PROFILE_HOLDER.screenName -> attachFragment(fragments, Screens.PROFILE_HOLDER.position)
                 }
 
 

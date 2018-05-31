@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.rtfmarket.R
+import com.rtfmarket.common.BackPressListener
 import com.rtfmarket.common.BaseFragment
 import com.rtfmarket.common.extension.dsl.lazySubcomponent
 import com.rtfmarket.di.bottomnavigationtab.BottomNavigationTabComponent
 import com.rtfmarket.di.profileholder.ProfileHolderComponent
 import com.rtfmarket.di.profileholder.ProfileHolderModule
 import com.rtfmarket.ui.bottomnavigation.BottomNavigationTabFragment.Companion.EXTRA_TAB_NAME
+import ru.terrakok.cicerone.Cicerone
+import javax.inject.Inject
 
-class ProfileHolderFragment: BaseFragment() {
+class ProfileHolderFragment: BaseFragment(), BackPressListener {
 
     companion object {
         fun createInstance(parentComponentName: String): BaseFragment {
@@ -25,20 +28,35 @@ class ProfileHolderFragment: BaseFragment() {
     }
 
     private val tabName by lazy { arguments!!.getString(EXTRA_TAB_NAME) }
+
     private var component by lazySubcomponent<ProfileHolderComponent, BottomNavigationTabComponent>(
             ProfileHolderComponent.NAME,
             { tabName }
     ) {
-        profileComponentBuilder()
-                .requestProfileModule(ProfileHolderModule())
+        profileHolderComponentBuilder()
+                .requestProfileModule(ProfileHolderModule(this@ProfileHolderFragment))
                 .build()
     }
 
+    @Inject lateinit var profileRouter: ProfileHolderRouter
+    @Inject lateinit var cicerone: Cicerone<ProfileHolderRouter>
+    @Inject lateinit var navigator: ProfileHolderNavigator
+
     override fun injectComponent() { component?.inject(this) }
     override fun rejectComponent() { component = null }
+    override fun setupNavigator() { cicerone.navigatorHolder.setNavigator(navigator) }
+    override fun removeNavigator() { cicerone.navigatorHolder.removeNavigator() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile_holder, container, false)
     }
 
+    override fun onBackPressed(): Boolean {
+        val backPressListenerFragment = childFragmentManager.findFragmentById(R.id.holderProfile) as? BackPressListener
+        val isBackPressConsumed = backPressListenerFragment?.onBackPressed() ?: false
+        if (!isBackPressConsumed) {
+            profileRouter.exit()
+        }
+        return true
+    }
 }

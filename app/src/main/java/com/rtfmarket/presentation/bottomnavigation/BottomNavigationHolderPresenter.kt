@@ -3,13 +3,8 @@ package com.rtfmarket.presentation.bottomnavigation
 import android.os.Handler
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
-import com.rtfmarket.common.constants.Screens
 import com.rtfmarket.common.constants.Screens.*
-import com.rtfmarket.common.navigation.CiceroneHolder
-import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationCiceroneHolder
 import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationRouter
-import com.rtfmarket.ui.bottomnavigation.navigation.BottomNavigationTabRouter
-import io.reactivex.rxkotlin.subscribeBy
 import ru.terrakok.cicerone.Router
 
 @InjectViewState
@@ -40,7 +35,7 @@ class BottomNavigationHolderPresenter(private val globalRouter: Router,
         return when(position) {
             CATALOG.position -> tabHolderRouter.replaceScreen(CATALOG.screenName)
             CART.position -> tabHolderRouter.replaceScreen(CART.screenName)
-            PROFILE.position -> tabHolderRouter.replaceScreen(PROFILE.screenName)
+            PROFILE_HOLDER.position -> tabHolderRouter.replaceScreen(PROFILE_HOLDER.screenName)
             else -> null
         }?.let { true } ?: false
     }

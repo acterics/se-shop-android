@@ -23,7 +23,7 @@ interface BottomNavigationTabComponent {
     fun catalogComponentBuilder(): CatalogComponent.Builder
     fun categoryComponentBuilder(): CategoryComponent.Builder
     fun productComponentBuilder(): ProductComponent.Builder
-    fun profileComponentBuilder(): ProfileHolderComponent.Builder
+    fun profileHolderComponentBuilder(): ProfileHolderComponent.Builder
 
     fun inject(bottomNavigationTabFragment: BottomNavigationTabFragment)
 }

@@ -6,7 +6,10 @@ enum class Screens(val screenName: String, val position: Int = -1) {
     CATALOG("catalog", 0),
 
     CART("cart", 1),
-    PROFILE("profile", 2),
+    PROFILE_HOLDER("profile", 2),
+    PROFILE_DATA("profile_data"),
+    PROFILE_NOT_AUTH("profile_not_auth"),
+
     CATEGORY("category"),
     ORDERING("ordering"),
     PRODUCT("product"),

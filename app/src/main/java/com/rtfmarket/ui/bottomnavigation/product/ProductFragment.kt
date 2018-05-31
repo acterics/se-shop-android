@@ -38,7 +38,7 @@ class ProductFragment: BaseFragment(), ProductView {
 
 
     private val product by lazy { arguments!!.getParcelable<Product>(EXTRA_PRODUCT) }
-    private val tabName by lazy { arguments!!.getString(EXTRA_PRODUCT) }
+    private val tabName by lazy { arguments!!.getString(EXTRA_TAB_NAME) }
 
     private var component by lazySubcomponent<ProductComponent, BottomNavigationTabComponent>(
             ProductComponent.NAME, { tabName }
@@ -63,5 +63,9 @@ class ProductFragment: BaseFragment(), ProductView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_product, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 }

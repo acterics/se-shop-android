@@ -4,4 +4,7 @@
   <color name="colorPrimaryLight">#ffc947</color>
   <color name="colorPrimary">#ff9800</color>
   <color name="colorPrimaryDark">#c66900</color>
+
+
+  <color name="dividerGray">#b7b7b7</color>
 </resources>
